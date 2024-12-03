@@ -4,13 +4,13 @@ plugins {
     `maven-publish`
 }
 
-val baseVersion = "0.0.30"
+val baseVersion = "0.0.1"
 val commitHash = System.getenv("COMMIT_HASH")
-val snapshotversion = "${baseVersion}-dev.$commitHash"
+val snapshotVersion = "${baseVersion}-dev.$commitHash"
 
 allprojects {
     group = "app.simplecloud.droplet.api"
-    version = if (commitHash != null) snapshotversion else baseVersion
+    version = if (commitHash != null) snapshotVersion else baseVersion
 
     repositories {
         mavenCentral()
@@ -51,14 +51,14 @@ publishing {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(22))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(21)
     compilerOptions {
         apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_22)
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
     }
 }
 
