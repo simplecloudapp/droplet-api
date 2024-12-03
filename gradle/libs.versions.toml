@@ -1,10 +1,58 @@
 [versions]
+grpc = "1.61.0"
+grpc-kotlin = "1.4.1"
+protobuf = "3.25.2"
 kotlin = "2.0.20"
+simplecloud-protospecs = "1.4.1.1.20241108142018.a431612a8826"
 sonatype-central-portal-publisher = "1.2.3"
+spotify-completablefutures = "0.3.6"
+ktor = "3.0.1"
+nimbus = "9.46"
+gson = "2.7"
 
 [libraries]
 kotlin-jvm = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
+
+grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded", version.ref = "grpc" }
+
+simplecloud-protospecs = { module = "build.buf.gen:simplecloud_proto-specs_grpc_kotlin", version.ref = "simplecloud-protospecs" }
+
+spotify-completablefutures = { module = "com.spotify:completable-futures", version.ref = "spotify-completablefutures" }
+
+ktor-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
+ktor-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+ktor-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
+ktor-auth-jwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor" }
+ktor-jackson = { module = "io.ktor:ktor-serialization-jackson", version.ref = "ktor" }
+ktor-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
+
+nimbus-jose-jwt = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbus" }
+
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+
+[bundles]
+proto = [
+    "protobuf-kotlin",
+    "grpc-stub",
+    "grpc-kotlin-stub",
+    "grpc-protobuf",
+    "grpc-netty-shaded",
+    "simplecloud-protospecs",
+]
+ktor = [
+    "ktor-core",
+    "ktor-netty",
+    "ktor-auth",
+    "ktor-auth-jwt",
+    "ktor-content-negotiation",
+    "ktor-jackson"
+]
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

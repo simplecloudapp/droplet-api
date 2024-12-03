@@ -19,8 +19,13 @@ allprojects {
 }
 
 dependencies {
-    testImplementation(rootProject.libs.kotlin.test)
-    implementation(rootProject.libs.kotlin.jvm)
+    testImplementation(libs.kotlin.test)
+    implementation(libs.kotlin.jvm)
+    api(libs.bundles.ktor)
+    api(libs.bundles.proto)
+    api(libs.spotify.completablefutures)
+    api(libs.nimbus.jose.jwt)
+    api(libs.gson)
 }
 
 publishing {
