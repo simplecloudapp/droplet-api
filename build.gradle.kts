@@ -1,7 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import org.jetbrains.kotlin.config.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.shadow)
@@ -9,8 +5,7 @@ plugins {
 }
 
 allprojects {
-    //TODO: Rename group
-    group = "app.simplecloud.template"
+    group = "app.simplecloud.droplet.api"
     version = "0.0.1-EXPERIMENTAL"
 
     repositories {
@@ -49,25 +44,7 @@ subprojects {
         }
     }
 
-    tasks.named("shadowJar", ShadowJar::class) {
-        dependsOn("processResources")
-        dependencies {
-            //TODO: Replace this with the renamed shared module
-            include(project(":template-gradle-shared"))
-            /**
-             * TODO: Add dependencies ADDED BY YOU like this:
-             * include(dependency(libs.your.dependency.get()))
-             */
-        }
-        archiveFileName.set("${project.name}.jar")
-    }
-
     tasks.test {
         useJUnitPlatform()
-    }
-
-    tasks.processResources {
-        expand("version" to project.version,
-            "name" to project.name)
     }
 }

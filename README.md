@@ -1,2 +1,2 @@
-# template-gradle
-The default simplecloud gradle setup.
+# droplet-api
+API classes used commonly in simplecloud droplets/services
