@@ -5,7 +5,7 @@ import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 
-object ProtoBufTimestamp {
+object ProtobufTimestamp {
     fun toLocalDateTime(timestamp: Timestamp): LocalDateTime {
         return LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp.seconds, timestamp.nanos.toLong()), ZoneId.systemDefault())
     }
