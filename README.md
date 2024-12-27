@@ -74,7 +74,7 @@ This repository is licensed under [Apache 2.0][license].
 
 <!-- ✅ PLEASE EDIT -->
 
-[banner]: https://raw.githubusercontent.com/simplecloudapp/branding/refs/heads/main/readme/banner/simplecloud.png
+[banner]: https://raw.githubusercontent.com/simplecloudapp/branding/refs/heads/main/readme/banner/droplet-api.png
 
 [issue-bug-report]: https://github.com/theSimpleCloud/droplet-api/issues/new?labels=bug&projects=template=01_BUG-REPORT.yml&title=%5BBUG%5D+%3Ctitle%3E
 
