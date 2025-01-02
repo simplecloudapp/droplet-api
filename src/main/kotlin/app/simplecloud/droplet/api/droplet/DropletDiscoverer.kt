@@ -9,6 +9,7 @@ import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import io.grpc.kotlin.AbstractCoroutineStub
 
+@Suppress("UNCHECKED_CAST", "MemberVisibilityCanBePrivate", "unused")
 class DropletDiscoverer(
     private val stub: ControllerDropletServiceGrpcKt.ControllerDropletServiceCoroutineStub,
     private val callCredentials: AuthCallCredentials,

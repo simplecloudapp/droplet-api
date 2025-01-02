@@ -3,12 +3,13 @@ package app.simplecloud.droplet.api.droplet
 import build.buf.gen.simplecloud.controller.v1.DropletDefinition
 import build.buf.gen.simplecloud.controller.v1.dropletDefinition
 
+@Suppress("unused")
 data class Droplet(
     val type: String,
     val id: String,
     val host: String,
     val port: Int,
-    val envoyPort: Int
+    val envoyPort: Int = 0
 ) {
     companion object {
         fun fromDefinition(definition: DropletDefinition): Droplet {
@@ -17,7 +18,6 @@ data class Droplet(
                 definition.id,
                 definition.host,
                 definition.port,
-                definition.envoyPort
             )
         }
     }
@@ -28,7 +28,6 @@ data class Droplet(
             id = this@Droplet.id
             host = this@Droplet.host
             port = this@Droplet.port
-            envoyPort = this@Droplet.envoyPort
-        };
+        }
     }
 }
