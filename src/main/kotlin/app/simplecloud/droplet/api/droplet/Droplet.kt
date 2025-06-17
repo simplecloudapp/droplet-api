@@ -4,7 +4,6 @@ import app.simplecloud.droplet.api.time.ProtobufTimestamp
 import build.buf.gen.simplecloud.controller.v1.DropletDefinition
 import build.buf.gen.simplecloud.controller.v1.dropletDefinition
 import java.time.LocalDateTime
-import java.util.*
 
 @Suppress("unused")
 data class Droplet(
@@ -15,19 +14,8 @@ data class Droplet(
     val uniqueId: String = DropletIdentifier.getOrCreate(),
     val envoyPort: Int = 0,
     val createdAt: LocalDateTime = LocalDateTime.now(),
+    val properties: MutableMap<String, String> = mutableMapOf(),
 ) {
-    companion object {
-        fun fromDefinition(definition: DropletDefinition): Droplet {
-            return Droplet(
-                definition.type,
-                definition.id,
-                definition.host,
-                definition.port,
-                uniqueId = definition.uniqueId,
-                createdAt = ProtobufTimestamp.toLocalDateTime(definition.createdAt)
-            )
-        }
-    }
 
     fun toDefinition(): DropletDefinition {
         return dropletDefinition {
@@ -37,6 +25,22 @@ data class Droplet(
             port = this@Droplet.port
             uniqueId = this@Droplet.uniqueId
             createdAt = ProtobufTimestamp.fromLocalDateTime(this@Droplet.createdAt)
+            dropletProperties.putAll(this@Droplet.properties)
         }
     }
+
+    companion object {
+        fun fromDefinition(definition: DropletDefinition): Droplet {
+            return Droplet(
+                definition.type,
+                definition.id,
+                definition.host,
+                definition.port,
+                uniqueId = definition.uniqueId,
+                createdAt = ProtobufTimestamp.toLocalDateTime(definition.createdAt),
+                properties = definition.dropletPropertiesMap
+            )
+        }
+    }
+
 }
