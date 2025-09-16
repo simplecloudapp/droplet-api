@@ -22,7 +22,9 @@ dependencies {
     testImplementation(libs.kotlin.test)
     implementation(libs.kotlin.jvm)
     api(libs.bundles.ktor)
-    api(libs.bundles.proto)
+    api(libs.bundles.proto) {
+        exclude(group = "org.jetbrains.kotlin")
+    }
     api(libs.spotify.completablefutures)
     api(libs.nimbus.jose.jwt)
     api(libs.gson)
